@@ -27,13 +27,13 @@ namespace WHA.Controllers
         // GET: Hydrant
         public ActionResult Index()
         {
-            var hydrant = _context.Hydrants.ToList();
-            return View(hydrant);
+            var hydrants = _context.Hydrants.ToList();
+            return View(hydrants);
         }
 
         public ActionResult New()
         {
-            var hydrant = new Hydrant();
+            var hydrant = new Hydrants();
 
             return View("HydrantForm", hydrant);
         }
@@ -59,15 +59,21 @@ namespace WHA.Controllers
         }
 
         [HttpPost]
-        public ActionResult Save(Hydrant hydrant)
+        [ValidateAntiForgeryToken]
+        public ActionResult Save(Hydrants hydrant)
         {
+            if (!ModelState.IsValid)
+            {
+                return View("HydrantForm", hydrant);
+            }
+
             if (hydrant.Id == 0)
                 _context.Hydrants.Add(hydrant);
 
             else
             {
                 var hydrantInDb = _context.Hydrants.Single(d => d.Id == hydrant.Id);
-                hydrantInDb.SupervisorId = hydrant.SupervisorId;
+                hydrantInDb.SupervisorName = hydrant.SupervisorName;
                 hydrantInDb.Location = hydrant.Location;
 
             }

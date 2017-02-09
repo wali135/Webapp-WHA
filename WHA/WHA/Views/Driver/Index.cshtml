@@ -1,5 +1,5 @@
 ﻿@using System.Web.Configuration
-@model IEnumerable<WHA.Models.Driver>
+@model IEnumerable<WHA.Models.Drivers>
 
 @{
     ViewBag.Title = "title";
@@ -7,6 +7,9 @@
 }
 
 <h2>Drivers</h2>
+<p>
+    @Html.ActionLink("New Driver", "New", "Driver", null, new { @class = "btn btn-primary" })
+</p>
 @if (!Model.Any())
 {
     <p>We don't have any Drivers Yet.</p>

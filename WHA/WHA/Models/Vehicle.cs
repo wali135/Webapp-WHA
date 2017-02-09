@@ -11,7 +11,7 @@ namespace WHA.Models
         public int Id { get; set; }
         public float Capacity { get; set; }
 
-        public Driver Driver { get; set; }
+        public Drivers Driver { get; set; }
 
         public int DriverId { get; set; }
 

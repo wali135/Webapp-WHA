@@ -1,24 +1,31 @@
 ﻿
-@model WHA.Models.Hydrant
+@model WHA.Models.Hydrants
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@Model.Location</h2>
+<h2>Add New Hydrant</h2>
 
 @using (Html.BeginForm("Save", "Hydrant"))
 {
     <div class="form-group">
         @Html.LabelFor(m=>m.Location)
         @Html.TextBoxFor(m=>m.Location, new {@class = "form-control"})
+        @Html.ValidationMessageFor(m => m.Location)
     </div>
     <div class="form-group">
-        @Html.LabelFor(m=>m.Supervisor)
-        @Html.TextBoxFor(m=>m.Supervisor, new {@class = "form-control"})
+        @Html.LabelFor(m=>m.SupervisorName)
+        @Html.TextBoxFor(m=>m.SupervisorName, new {@class = "form-control"})
+        @Html.ValidationMessageFor(m => m.SupervisorName)
     </div> 
     
-    @Html.HiddenFor(d => d.Id);
+    @Html.HiddenFor(d => d.Id)
+    @Html.AntiForgeryToken()
     <button type="submit" class="btn btn-primary">Save</button>
 
+}
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval");
 }

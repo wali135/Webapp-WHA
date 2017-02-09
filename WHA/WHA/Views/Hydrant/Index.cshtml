@@ -1,5 +1,5 @@
 ﻿@using System.Web.Configuration
-@model IEnumerable<WHA.Models.Hydrant>
+@model IEnumerable<WHA.Models.Hydrants>
 
 @{
     ViewBag.Title = "title";
@@ -7,6 +7,9 @@
 }
 
 <h2>Hydrants</h2>
+<p>
+    @Html.ActionLink("New Hydrant", "New", "Hydrant", null, new { @class = "btn btn-primary" })
+</p>
 @if (!Model.Any())
 {
     <p>We don't have any Hydrant Yet.</p>
@@ -28,7 +31,7 @@ else
             <tr>
                 
                 <td>@Html.ActionLink(hydrant.Location, "Edit", "Hydrant", new {id=hydrant.Id}, null)</td>
-                <td>@hydrant.Supervisor</td>
+                <td>@hydrant.SupervisorName</td>
 
             </tr>
         }

@@ -11,7 +11,7 @@ namespace WHA.Models
         public int Id { get; set; }
 
         [Required]
-        public Hydrant Hydrant { get; set; }
+        public Hydrants Hydrant { get; set; }
         [Required]
         public Vehicle Vehicle { get; set; }
 

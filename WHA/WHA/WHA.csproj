@@ -180,29 +180,26 @@
     <Compile Include="Migrations\201702081725221_InitialCreate.Designer.cs">
       <DependentUpon>201702081725221_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201702082022588_ModelUpdate.cs" />
-    <Compile Include="Migrations\201702082022588_ModelUpdate.Designer.cs">
-      <DependentUpon>201702082022588_ModelUpdate.cs</DependentUpon>
+    <Compile Include="Migrations\201702092230572_Shithappen.cs" />
+    <Compile Include="Migrations\201702092230572_Shithappen.Designer.cs">
+      <DependentUpon>201702092230572_Shithappen.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201702082025469_RfidFromDtoV.cs" />
-    <Compile Include="Migrations\201702082025469_RfidFromDtoV.Designer.cs">
-      <DependentUpon>201702082025469_RfidFromDtoV.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201702091759245_DriverCNiCandPHone.cs" />
-    <Compile Include="Migrations\201702091759245_DriverCNiCandPHone.Designer.cs">
-      <DependentUpon>201702091759245_DriverCNiCandPHone.cs</DependentUpon>
+    <Compile Include="Migrations\201702092255375_justchecking.cs" />
+    <Compile Include="Migrations\201702092255375_justchecking.Designer.cs">
+      <DependentUpon>201702092255375_justchecking.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Driver.cs" />
+    <Compile Include="Models\Drivers.cs" />
     <Compile Include="Models\Entry.cs" />
-    <Compile Include="Models\Hydrant.cs" />
+    <Compile Include="Models\Hydrants.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Supervisor.cs" />
     <Compile Include="Models\Vehicle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\SupervisorViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -283,14 +280,11 @@
     <EmbeddedResource Include="Migrations\201702081725221_InitialCreate.resx">
       <DependentUpon>201702081725221_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201702082022588_ModelUpdate.resx">
-      <DependentUpon>201702082022588_ModelUpdate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201702092230572_Shithappen.resx">
+      <DependentUpon>201702092230572_Shithappen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201702082025469_RfidFromDtoV.resx">
-      <DependentUpon>201702082025469_RfidFromDtoV.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201702091759245_DriverCNiCandPHone.resx">
-      <DependentUpon>201702091759245_DriverCNiCandPHone.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201702092255375_justchecking.resx">
+      <DependentUpon>201702092255375_justchecking.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

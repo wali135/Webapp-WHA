@@ -33,7 +33,7 @@ namespace WHA.Controllers
 
         public ActionResult New()
         {
-            var driver = new Driver();
+            var driver = new Drivers();
 
             return View("DriverForm", driver);
         }
@@ -59,8 +59,9 @@ namespace WHA.Controllers
         }
 
         [HttpPost]
+
         [ValidateAntiForgeryToken]
-        public ActionResult Save(Driver driver)
+        public ActionResult Save(Drivers driver)
         {
             if (!ModelState.IsValid)
             {
