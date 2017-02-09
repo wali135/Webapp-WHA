@@ -13,7 +13,10 @@ namespace WHA.Models
 
         public Driver Driver { get; set; }
 
-        public int DriverId { get; set; }   
+        public int DriverId { get; set; }
+
+        public int RfId { get; set; }
+
 
     }
 }

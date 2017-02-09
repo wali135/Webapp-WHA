@@ -1,0 +1,11 @@
+﻿@model WHA.Models.Hydrant
+
+@{
+    ViewBag.Title = Model.Location;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Location</h2>
+<ul>
+    <li>Supervisor: @Model.Supervisor</li>
+</ul>

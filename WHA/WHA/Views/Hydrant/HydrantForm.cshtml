@@ -1,0 +1,24 @@
+﻿
+@model WHA.Models.Hydrant
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Location</h2>
+
+@using (Html.BeginForm("Save", "Hydrant"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m=>m.Location)
+        @Html.TextBoxFor(m=>m.Location, new {@class = "form-control"})
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m=>m.Supervisor)
+        @Html.TextBoxFor(m=>m.Supervisor, new {@class = "form-control"})
+    </div> 
+    
+    @Html.HiddenFor(d => d.Id);
+    <button type="submit" class="btn btn-primary">Save</button>
+
+}

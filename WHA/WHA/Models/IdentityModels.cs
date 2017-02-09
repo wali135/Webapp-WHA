@@ -9,9 +9,7 @@ namespace WHA.Models
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
-        public DbSet<Driver> Drivers{ get; set; }
-        public DbSet<Hydrant> Hydrants { get; set; }
-        public DbSet<Vehicle> Vehicles { get; set; }
+       
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
@@ -24,6 +22,9 @@ namespace WHA.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<Driver> Drivers { get; set; }
+        public DbSet<Hydrant> Hydrants { get; set; }
+        public DbSet<Vehicle> Vehicles { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

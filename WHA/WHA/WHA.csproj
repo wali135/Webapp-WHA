@@ -170,6 +170,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DriverController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HydrantController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SupervisorController.cs" />
     <Compile Include="Global.asax.cs">
@@ -178,6 +179,18 @@
     <Compile Include="Migrations\201702081725221_InitialCreate.cs" />
     <Compile Include="Migrations\201702081725221_InitialCreate.Designer.cs">
       <DependentUpon>201702081725221_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702082022588_ModelUpdate.cs" />
+    <Compile Include="Migrations\201702082022588_ModelUpdate.Designer.cs">
+      <DependentUpon>201702082022588_ModelUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702082025469_RfidFromDtoV.cs" />
+    <Compile Include="Migrations\201702082025469_RfidFromDtoV.Designer.cs">
+      <DependentUpon>201702082025469_RfidFromDtoV.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702091759245_DriverCNiCandPHone.cs" />
+    <Compile Include="Migrations\201702091759245_DriverCNiCandPHone.Designer.cs">
+      <DependentUpon>201702091759245_DriverCNiCandPHone.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -249,7 +262,11 @@
     <Content Include="Views\Shared\_NavBar.cshtml" />
     <Content Include="Views\Supervisor\Index.cshtml" />
     <Content Include="Views\Driver\Index.cshtml" />
-    <Content Include="Views\Driver\Edit.cshtml" />
+    <Content Include="Views\Driver\DriverForm.cshtml" />
+    <Content Include="Views\Driver\Details.cshtml" />
+    <Content Include="Views\Hydrant\HydrantForm.cshtml" />
+    <Content Include="Views\Hydrant\Index.cshtml" />
+    <Content Include="Views\Hydrant\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -265,6 +282,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201702081725221_InitialCreate.resx">
       <DependentUpon>201702081725221_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702082022588_ModelUpdate.resx">
+      <DependentUpon>201702082022588_ModelUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702082025469_RfidFromDtoV.resx">
+      <DependentUpon>201702082025469_RfidFromDtoV.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702091759245_DriverCNiCandPHone.resx">
+      <DependentUpon>201702091759245_DriverCNiCandPHone.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

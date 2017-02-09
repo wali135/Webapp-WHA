@@ -1,8 +1,39 @@
-﻿@model WHA.Models.Driver
+﻿@using System.Web.Configuration
+@model IEnumerable<WHA.Models.Driver>
 
 @{
     ViewBag.Title = "title";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Driver Pannel</h2>
+<h2>Drivers</h2>
+@if (!Model.Any())
+{
+    <p>We don't have any Drivers Yet.</p>
+}
+else
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+            
+            <th>Driver Name</th>
+            <th>Driver CNIC</th>
+            <th>Driver Mobile Number</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var driver in Model)
+        {
+            <tr>
+                
+                <td>@Html.ActionLink(driver.Name, "Edit", "Driver", new {id=driver.Id}, null)</td>
+                <td>@driver.CNIC</td>
+                <td>@driver.MobileNumber</td>
+
+            </tr>
+        }
+        </tbody>
+    </table>
+}

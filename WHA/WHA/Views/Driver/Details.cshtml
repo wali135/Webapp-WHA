@@ -1,0 +1,12 @@
+﻿@model WHA.Models.Driver
+
+@{
+    ViewBag.Title = Model.Name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Name</h2>
+<ul>
+    <li>CNIC: @Model.CNIC</li>
+    <li>Phone Number: @Model.MobileNumber</li>
+</ul>

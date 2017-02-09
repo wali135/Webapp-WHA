@@ -1,0 +1,37 @@
+﻿@using System.Web.Configuration
+@model IEnumerable<WHA.Models.Hydrant>
+
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Hydrants</h2>
+@if (!Model.Any())
+{
+    <p>We don't have any Hydrant Yet.</p>
+}
+else
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+            
+            <th>Hydrant Location</th>
+            <th>Hydrant Supervisor</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var hydrant in Model)
+        {
+            <tr>
+                
+                <td>@Html.ActionLink(hydrant.Location, "Edit", "Hydrant", new {id=hydrant.Id}, null)</td>
+                <td>@hydrant.Supervisor</td>
+
+            </tr>
+        }
+        </tbody>
+    </table>
+}
