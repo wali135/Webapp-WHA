@@ -10,31 +10,70 @@
 <p>
     @Html.ActionLink("New Hydrant", "New", "Hydrant", null, new { @class = "btn btn-primary" })
 </p>
-@if (!Model.Any())
-{
-    <p>We don't have any Hydrant Yet.</p>
-}
-else
-{
-    <table class="table table-bordered table-hover">
+
+    <table id="hydrants" class="table table-bordered table-hover">
         <thead>
         <tr>
             
             <th>Hydrant Location</th>
             <th>Hydrant Supervisor</th>
+            <th>Delete</th>
 
         </tr>
         </thead>
         <tbody>
-        @foreach (var hydrant in Model)
-        {
-            <tr>
-                
-                <td>@Html.ActionLink(hydrant.Location, "Edit", "Hydrant", new {id=hydrant.Id}, null)</td>
-                <td>@hydrant.SupervisorName</td>
-
-            </tr>
-        }
+       
         </tbody>
     </table>
+
+@section scripts{
+    <script>
+        $(document).ready(function() {
+            var table = $("#hydrants").DataTable({
+                ajax: {
+                    url: "/api/hydrants",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "location",
+                        render: function(data, type, hydrant) {
+                            return "<a href='/hydrant/edit/" + hydrant.id + "'>" + hydrant.location + "</a>";
+                        }
+                    }, {
+                        data: "supervisorName"
+                    }, {
+                        data: "id",
+                        render: function(data) {
+                            return "<button class='btn-link js-delete' data-hydrant-id=" + data + ">Delete</button>";
+                        }
+                    }
+                ]
+            });
+
+            $("#hydrants").on("click",
+                ".js-delete",
+                function() {
+                    var button = $(this);
+                    bootbox.confirm("Are you sure you want to Remove this Hydrant?",
+                        function(result) {
+                            if (result) {
+                                $.ajax({
+                                    url: "/api/hydrants/" + button.attr("data-hydrant-id"),
+                                    method: "DELETE",
+                                    success: function() {
+                                        table.row(button.parents("tr")).remove().draw();
+                                        button.parents("tr").remove();
+
+                                    }
+
+                                });
+                            }
+                        });
+
+                });
+
+        });
+
+    </script>
 }

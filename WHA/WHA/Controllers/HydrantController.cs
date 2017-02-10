@@ -27,8 +27,8 @@ namespace WHA.Controllers
         // GET: Hydrant
         public ActionResult Index()
         {
-            var hydrants = _context.Hydrants.ToList();
-            return View(hydrants);
+            
+            return View();
         }
 
         public ActionResult New()

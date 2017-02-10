@@ -10,33 +10,73 @@
 <p>
     @Html.ActionLink("New Driver", "New", "Driver", null, new { @class = "btn btn-primary" })
 </p>
-@if (!Model.Any())
-{
-    <p>We don't have any Drivers Yet.</p>
-}
-else
-{
-    <table class="table table-bordered table-hover">
+
+    <table id="drivers" class="table table-bordered table-hover">
         <thead>
         <tr>
             
             <th>Driver Name</th>
             <th>Driver CNIC</th>
             <th>Driver Mobile Number</th>
+            <th>Delete</th>
 
         </tr>
         </thead>
         <tbody>
-        @foreach (var driver in Model)
-        {
-            <tr>
-                
-                <td>@Html.ActionLink(driver.Name, "Edit", "Driver", new {id=driver.Id}, null)</td>
-                <td>@driver.CNIC</td>
-                <td>@driver.MobileNumber</td>
-
-            </tr>
-        }
+      
         </tbody>
     </table>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+               var table= $("#drivers").DataTable({
+                    ajax: {
+                        url: "/api/drivers",
+                        dataSrc: ""
+            },
+                columns:[
+                    {
+                        data:"name",
+                        render: function(data,type,driver) {
+                            return "<a href='/drivers/edit/" + driver.id + "'>" + driver.name + "</a>";
+                        }
+                    }, {
+                        data:"cnic"
+                    },
+                    {
+                        data:"mobileNumber"
+                    }
+                    , {
+                        data:"id",
+                        render:function(data) {
+                            return "<button class='btn-link js-delete' data-driver-id=" + data + ">Delete</button>";
+                        }
+                    }
+                ]
+            });
+
+            $("#drivers").on("click",".js-delete",
+                function () {
+                    var button = $(this);
+                    bootbox.confirm("Are you sure you want to delete this driver?",
+                        function(result) {
+                            if (result) {
+                                $.ajax({
+                                    url: "/api/drivers/" + button.attr("data-driver-id"),
+                                    method: "DELETE",
+                                    success: function () {
+                                        table.row(button.parents("tr")).remove().draw();
+                                        button.parents("tr").remove();
+
+                                    }
+
+                                });
+                            }
+                        });
+
+                });
+
+        });
+    </script>
 }

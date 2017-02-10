@@ -27,8 +27,8 @@ namespace WHA.Controllers
         // GET: Driver
         public ActionResult Index()
         {
-            var drivers = _context.Drivers.ToList();
-            return View(drivers);
+           
+            return View();
         }
 
         public ActionResult New()
