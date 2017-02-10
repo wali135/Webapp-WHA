@@ -39,16 +39,17 @@ namespace WHA.Controllers.Api
 
         //POST /api/drivers
         [HttpPost]
-        public DriverDto CreateDrivers(DriverDto driverDto)
+        public IHttpActionResult CreateDrivers(DriverDto driverDto)
         {
             if(!ModelState.IsValid)
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
+               return BadRequest();
+
             var driver = Mapper.Map<DriverDto, Drivers>(driverDto);
             _context.Drivers.Add(driver);
             _context.SaveChanges();
             driverDto.Id = driver.Id;
 
-            return driverDto;
+            return Created(new Uri(Request.RequestUri+"/"+driver.Id),driverDto );
 
         }
 

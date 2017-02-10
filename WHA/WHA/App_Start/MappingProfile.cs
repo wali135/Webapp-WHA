@@ -14,7 +14,12 @@ namespace WHA.App_Start
         public MappingProfile()
         {
             Mapper.CreateMap<Drivers, DriverDto>();
+            Mapper.CreateMap<Hydrants, HydrantDto>();
+
+
+
             Mapper.CreateMap<DriverDto, Drivers>();
+            Mapper.CreateMap<HydrantDto, Hydrants>();
         }
     }
 }

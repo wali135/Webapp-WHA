@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace WHA
 {
@@ -9,6 +11,12 @@ namespace WHA
     {
         public static void Register(HttpConfiguration config)
         {
+            var setting = config.Formatters.JsonFormatter.SerializerSettings;
+            setting.ContractResolver= new CamelCasePropertyNamesContractResolver();
+            setting.Formatting = Formatting.Indented;
+
+
+
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
@@ -16,6 +24,8 @@ namespace WHA
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+            var appXmlType = config.Formatters.XmlFormatter.SupportedMediaTypes.FirstOrDefault(t => t.MediaType == "application/xml");
+            config.Formatters.XmlFormatter.SupportedMediaTypes.Remove(appXmlType);
         }
     }
 }
