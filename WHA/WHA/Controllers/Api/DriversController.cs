@@ -5,6 +5,8 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Configuration;
 using System.Web.Http;
+using AutoMapper;
+using WHA.Dtos;
 using WHA.Models;
 
 namespace WHA.Controllers.Api
@@ -20,37 +22,39 @@ namespace WHA.Controllers.Api
 
 
         // GET /api/drivers
-        public IEnumerable<Drivers> GetDrivers()
+        public IEnumerable<DriverDto> GetDrivers()
         {
-            return _context.Drivers.ToList();
+            return _context.Drivers.ToList().Select(Mapper.Map<Drivers,DriverDto>);
         }
 
          // GET /api/drivers/1
-        public Drivers GetDriver(int id)
+        public DriverDto GetDriver(int id)
         {
             var driver = _context.Drivers.SingleOrDefault(m => m.Id == id);
             if (driver == null)
              throw new HttpResponseException(HttpStatusCode.NotFound);
             
-            return driver;
+            return Mapper.Map<Drivers,DriverDto>(driver);
         }
 
         //POST /api/drivers
         [HttpPost]
-        public Drivers CreateDrivers(Drivers driver)
+        public DriverDto CreateDrivers(DriverDto driverDto)
         {
             if(!ModelState.IsValid)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
-
+            var driver = Mapper.Map<DriverDto, Drivers>(driverDto);
             _context.Drivers.Add(driver);
             _context.SaveChanges();
+            driverDto.Id = driver.Id;
 
-            return driver;
+            return driverDto;
 
         }
 
         //PUT /api/drivers/1
-        public void UpdateDriver(int id, Drivers driver)
+        [HttpPut]
+        public void UpdateDriver(int id, DriverDto driverDto)
         {
             if(!ModelState.IsValid)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
@@ -59,10 +63,8 @@ namespace WHA.Controllers.Api
             if(driverInDb ==null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
 
-            driverInDb.Name = driver.Name;
-            driverInDb.CNIC = driver.CNIC;
-            driverInDb.MobileNumber = driver.MobileNumber;
-
+            Mapper.Map(driverDto, driverInDb);
+          
             _context.SaveChanges();
         }
 
