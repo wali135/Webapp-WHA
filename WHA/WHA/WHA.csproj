@@ -190,6 +190,7 @@
     <Compile Include="Controllers\Api\EntriesController.cs" />
     <Compile Include="Controllers\Api\HydrantsController.cs" />
     <Compile Include="Controllers\DriverController.cs" />
+    <Compile Include="Controllers\EntryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HydrantController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -479,6 +480,7 @@
     <Content Include="Views\Hydrant\HydrantForm.cshtml" />
     <Content Include="Views\Hydrant\Index.cshtml" />
     <Content Include="Views\Hydrant\Details.cshtml" />
+    <Content Include="Views\Entry\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
