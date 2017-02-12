@@ -76,6 +76,7 @@ namespace WHA.Controllers
                 var driverInDb =_context.Drivers.Single(d => d.Id == driver.Id);
                 driverInDb.Name = driver.Name;
                 driverInDb.CNIC = driver.CNIC;
+                driverInDb.Uid = driver.Uid;
                 driverInDb.MobileNumber = driver.MobileNumber;
 
             }

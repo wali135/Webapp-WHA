@@ -210,6 +210,10 @@
     <Compile Include="Migrations\201702092255375_justchecking.Designer.cs">
       <DependentUpon>201702092255375_justchecking.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702121636003_Rfidadded.cs" />
+    <Compile Include="Migrations\201702121636003_Rfidadded.Designer.cs">
+      <DependentUpon>201702121636003_Rfidadded.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Drivers.cs" />
@@ -485,6 +489,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702092255375_justchecking.resx">
       <DependentUpon>201702092255375_justchecking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702121636003_Rfidadded.resx">
+      <DependentUpon>201702121636003_Rfidadded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

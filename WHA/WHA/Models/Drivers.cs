@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Security.AccessControl;
 using System.Web;
@@ -16,6 +17,13 @@ namespace WHA.Models
         [StringLength(255)]
         public string Name { get; set; }
 
+
+
+        [Required]
+        [StringLength(20)]
+        [Display(Name = "RFID Card Number")]
+        public string Uid { get; set; }
+        
 
         
         [Required]

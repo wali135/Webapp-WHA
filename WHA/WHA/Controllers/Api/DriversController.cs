@@ -28,9 +28,10 @@ namespace WHA.Controllers.Api
         }
 
          // GET /api/drivers/1
-        public DriverDto GetDriver(int id)
+         [Route("api/drivers/{uid}")]
+        public DriverDto GetDriver(string uid)
         {
-            var driver = _context.Drivers.SingleOrDefault(m => m.Id == id);
+            var driver = _context.Drivers.SingleOrDefault(m => m.Uid == uid);
             if (driver == null)
              throw new HttpResponseException(HttpStatusCode.NotFound);
             

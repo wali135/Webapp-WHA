@@ -16,6 +16,12 @@
         @Html.ValidationMessageFor(m=>m.Name)
     </div>
     <div class="form-group">
+        @Html.LabelFor(m=>m.Uid)
+        @Html.TextBoxFor(m=>m.Uid, new {@class = "form-control"})
+        @Html.ValidationMessageFor(m=>m.Uid)
+    </div>
+
+    <div class="form-group">
         @Html.LabelFor(m=>m.CNIC)
         @Html.TextBoxFor(m=>m.CNIC, new {@class = "form-control"})
         @Html.ValidationMessageFor(m => m.CNIC)

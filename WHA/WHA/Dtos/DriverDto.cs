@@ -16,7 +16,9 @@ namespace WHA.Dtos
         [StringLength(255)]
         public string Name { get; set; }
 
-
+        [Required]
+        [StringLength(20)]
+        public string Uid { get; set; }
 
         [Required]
         [RegularExpression(@"^[0-9]{13}$", ErrorMessage = "Invalid CNIC number must be 13 digits long")]

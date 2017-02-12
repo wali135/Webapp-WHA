@@ -16,6 +16,7 @@
         <tr>
             
             <th>Driver Name</th>
+            <th>Driver Card Number</th>
             <th>Driver CNIC</th>
             <th>Driver Mobile Number</th>
             <th>Delete</th>
@@ -39,9 +40,12 @@
                     {
                         data:"name",
                         render: function(data,type,driver) {
-                            return "<a href='/drivers/edit/" + driver.id + "'>" + driver.name + "</a>";
+                            return "<a href='/driver/edit/" + driver.id + "'>" + driver.name + "</a>";
                         }
                     }, {
+                        data:"uid"
+                    },
+                    {
                         data:"cnic"
                     },
                     {
