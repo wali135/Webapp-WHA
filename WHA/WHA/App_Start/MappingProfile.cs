@@ -15,11 +15,13 @@ namespace WHA.App_Start
         {
             Mapper.CreateMap<Drivers, DriverDto>();
             Mapper.CreateMap<Hydrants, HydrantDto>();
+            Mapper.CreateMap<Entry, EntryDto>();
 
 
 
-            Mapper.CreateMap<DriverDto, Drivers>();
-            Mapper.CreateMap<HydrantDto, Hydrants>();
+            Mapper.CreateMap<DriverDto, Drivers>().ForMember(c => c.Id, opt => opt.Ignore());
+            Mapper.CreateMap<HydrantDto, Hydrants>().ForMember(c => c.Id, opt => opt.Ignore());
+
         }
     }
 }

@@ -73,6 +73,7 @@ namespace WHA.Controllers.Api
 
         //DELETE /api/drivers/1
         [HttpDelete]
+        [Route("api/drivers/{id}")]
         public void DeleteDriver(int id)
         {
             var driverInDb = _context.Drivers.SingleOrDefault(d => d.Id == id);

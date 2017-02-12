@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using WHA.Models;
 
-namespace WHA.Models
+namespace WHA.Dtos
 {
-    public class Entry
+    public class EntryDto
     {
         public int Id { get; set; }
 
         [Required]
-        public int HydrantId { get; set; }
+        public Hydrants Hydrant { get; set; }
 
         [Required]
         public Drivers Driver { get; set; }
@@ -20,7 +21,6 @@ namespace WHA.Models
         public DateTime DateTime { get; set; }
 
         [Required]
-        public float Consumption { get; set; }  
-
+        public float Consumption { get; set; }
     }
 }

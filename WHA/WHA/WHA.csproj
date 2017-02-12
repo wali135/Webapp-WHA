@@ -187,6 +187,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\DriversController.cs" />
+    <Compile Include="Controllers\Api\EntriesController.cs" />
     <Compile Include="Controllers\Api\HydrantsController.cs" />
     <Compile Include="Controllers\DriverController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -194,6 +195,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SupervisorController.cs" />
     <Compile Include="Dtos\DriverDto.cs" />
+    <Compile Include="Dtos\EntryDto.cs" />
     <Compile Include="Dtos\HydrantDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -214,8 +216,17 @@
     <Compile Include="Migrations\201702121636003_Rfidadded.Designer.cs">
       <DependentUpon>201702121636003_Rfidadded.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702121849306_EntryAdded.cs" />
+    <Compile Include="Migrations\201702121849306_EntryAdded.Designer.cs">
+      <DependentUpon>201702121849306_EntryAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702122034583_hydrantFixId.cs" />
+    <Compile Include="Migrations\201702122034583_hydrantFixId.Designer.cs">
+      <DependentUpon>201702122034583_hydrantFixId.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Drivers.cs" />
     <Compile Include="Models\Entry.cs" />
     <Compile Include="Models\Hydrants.cs" />
@@ -492,6 +503,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702121636003_Rfidadded.resx">
       <DependentUpon>201702121636003_Rfidadded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702121849306_EntryAdded.resx">
+      <DependentUpon>201702121849306_EntryAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702122034583_hydrantFixId.resx">
+      <DependentUpon>201702122034583_hydrantFixId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
