@@ -158,10 +158,10 @@ namespace WHA.Controllers
                 {
 
                     //TEMP Code
-                    var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
-                    var rolemanager = new RoleManager<IdentityRole>(roleStore);
-                    await rolemanager.CreateAsync(new IdentityRole("Adminstrator"));
-                    await UserManager.AddToRoleAsync(user.Id, "Adminstrator");
+                    //var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
+                   // var rolemanager = new RoleManager<IdentityRole>(roleStore);
+                    //await rolemanager.CreateAsync(new IdentityRole("Adminstrator"));
+                    //await UserManager.AddToRoleAsync(user.Id, "Adminstrator");
 
 
 

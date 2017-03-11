@@ -27,10 +27,14 @@ namespace WHA.Controllers
         // GET: Driver
         public ActionResult Index()
         {
-           
+           if(User.IsInRole(RoleName.Admin))
             return View();
+
+            return View("IndexSuper");
         }
 
+
+        [Authorize(Roles =RoleName.Admin)]
         public ActionResult New()
         {
             var driver = new Drivers();

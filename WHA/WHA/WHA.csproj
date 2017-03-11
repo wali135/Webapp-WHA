@@ -233,6 +233,7 @@
     <Compile Include="Models\Hydrants.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\RoleName.cs" />
     <Compile Include="Models\Supervisor.cs" />
     <Compile Include="Models\Vehicle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -481,6 +482,7 @@
     <Content Include="Views\Hydrant\Index.cshtml" />
     <Content Include="Views\Hydrant\Details.cshtml" />
     <Content Include="Views\Entry\Index.cshtml" />
+    <Content Include="Views\Driver\IndexSuper.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

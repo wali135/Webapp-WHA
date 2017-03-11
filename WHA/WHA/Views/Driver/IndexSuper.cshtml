@@ -1,0 +1,58 @@
+﻿@using System.Web.Configuration
+@model IEnumerable<WHA.Models.Drivers>
+
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Drivers</h2>
+
+
+<table id="drivers" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+
+            <th>Driver Name</th>
+            <th>Driver Card Number</th>
+            <th>Driver CNIC</th>
+            <th>Driver Mobile Number</th>
+            
+
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            var table = $("#drivers").DataTable({
+                ajax: {
+                    url: "/api/drivers",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "name",
+                        render: function (data, type, driver) {
+                            return "<a href='/driver/Details/" + driver.id + "'>" + driver.name + "</a>";
+                        }
+                    }, {
+                        data: "uid"
+                    },
+                    {
+                        data: "cnic"
+                    },
+                    {
+                        data: "mobileNumber"
+                    }
+                    
+                ]
+            });
+
+           
+
+        });
+    </script>
+}
