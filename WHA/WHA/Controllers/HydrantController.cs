@@ -27,16 +27,21 @@ namespace WHA.Controllers
         // GET: Hydrant
         public ActionResult Index()
         {
-            
+            if(User.IsInRole(RoleName.Admin))
             return View();
+
+            return View("IndexSuper");
         }
 
+        [Authorize(Roles =RoleName.Admin)]
         public ActionResult New()
         {
             var hydrant = new Hydrants();
 
             return View("HydrantForm", hydrant);
         }
+
+
         public ActionResult Details(int id)
         {
             var hydrant = _context.Hydrants.SingleOrDefault(d => d.Id == id);

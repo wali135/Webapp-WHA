@@ -26,6 +26,12 @@ namespace WHA.Controllers.Api
             return _context.Entries.Include(c=>c.Driver).ToList();
         }
 
+        //GET /api/entries/id
+        [Route("api/entries/{id}")]
+        public IEnumerable<Entry> GetEntries(int id)
+        {
+            return _context.Entries.Where(b=>b.HydrantId==id).Include(c=>c.Driver).ToList();
+        }
 
         //POST /api/entry
         

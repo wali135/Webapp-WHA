@@ -483,6 +483,8 @@
     <Content Include="Views\Hydrant\Details.cshtml" />
     <Content Include="Views\Entry\Index.cshtml" />
     <Content Include="Views\Driver\IndexSuper.cshtml" />
+    <Content Include="Views\Hydrant\IndexSuper.cshtml" />
+    <Content Include="Views\Entry\IndexSuper.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
