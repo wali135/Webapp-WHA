@@ -52,6 +52,9 @@ namespace WHA.Models
         [Display(Name = "Email")]
         [EmailAddress]
         public string Email { get; set; }
+        
+        [Display(Name ="Account Type")]
+        public string Type { get; set; }
 
         [Required]
         [DataType(DataType.Password)]

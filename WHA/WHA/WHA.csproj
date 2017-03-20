@@ -225,6 +225,10 @@
     <Compile Include="Migrations\201702122034583_hydrantFixId.Designer.cs">
       <DependentUpon>201702122034583_hydrantFixId.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703121224537_AccountType.cs" />
+    <Compile Include="Migrations\201703121224537_AccountType.Designer.cs">
+      <DependentUpon>201703121224537_AccountType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -515,6 +519,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702122034583_hydrantFixId.resx">
       <DependentUpon>201702122034583_hydrantFixId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703121224537_AccountType.resx">
+      <DependentUpon>201703121224537_AccountType.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

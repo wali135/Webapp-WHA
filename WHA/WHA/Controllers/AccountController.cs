@@ -137,7 +137,7 @@ namespace WHA.Controllers
 
         //
         // GET: /Account/Register
-        [AllowAnonymous]
+        [Authorize(Roles = RoleName.Admin)]
         public ActionResult Register()
         {
             return View();
@@ -146,7 +146,7 @@ namespace WHA.Controllers
         //
         // POST: /Account/Register
         [HttpPost]
-        [AllowAnonymous]
+        [Authorize(Roles = RoleName.Admin)]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
@@ -159,13 +159,13 @@ namespace WHA.Controllers
 
                     //TEMP Code
                     //var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
-                   // var rolemanager = new RoleManager<IdentityRole>(roleStore);
-                    //await rolemanager.CreateAsync(new IdentityRole("Adminstrator"));
-                    //await UserManager.AddToRoleAsync(user.Id, "Adminstrator");
+                    //var rolemanager = new RoleManager<IdentityRole>(roleStore);
+                   // await rolemanager.CreateAsync(new IdentityRole("Adminstrator"));
+                   // await UserManager.AddToRoleAsync(user.Id, "Adminstrator");
 
 
 
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+                   // await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
@@ -173,7 +173,7 @@ namespace WHA.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Register", "Account");
                 }
                 AddErrors(result);
             }
