@@ -118,6 +118,9 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="WebApiContrib.Formatting.Jsonp, Version=3.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebApiContrib.Formatting.Jsonp.3.0.2\lib\net45\WebApiContrib.Formatting.Jsonp.dll</HintPath>
+    </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
@@ -180,13 +183,16 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\FormatterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\JsonpFilterAttribute.cs" />
     <Compile Include="App_Start\MappingProfile.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\DriversController.cs" />
+    <Compile Include="Controllers\Api\indexcontroller.cs" />
     <Compile Include="Controllers\Api\EntriesController.cs" />
     <Compile Include="Controllers\Api\HydrantsController.cs" />
     <Compile Include="Controllers\DriverController.cs" />
@@ -195,6 +201,7 @@
     <Compile Include="Controllers\HydrantController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SupervisorController.cs" />
+    <Compile Include="CustomActionR\JsonpResult.cs" />
     <Compile Include="Dtos\DriverDto.cs" />
     <Compile Include="Dtos\EntryDto.cs" />
     <Compile Include="Dtos\HydrantDto.cs" />
@@ -232,6 +239,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
+    <Compile Include="Models\pitoday.cs" />
     <Compile Include="Models\Drivers.cs" />
     <Compile Include="Models\Entry.cs" />
     <Compile Include="Models\Hydrants.cs" />

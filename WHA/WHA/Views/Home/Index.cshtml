@@ -1,31 +1,89 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+<script src="https://code.highcharts.com/highcharts.src.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/highcharts-3d.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<div class="panel-heading">
+    <h1>Admin Report</h1>
+        <div id="container" style="height: 400px"></div>
+        <script>
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+
+            var cons3 = 20.5;
+            var cons5 = 30.5;
+            var cons6 = 40.6;
+            var cons7 = 50.2;
+
+            (function ($) {
+                $.getJSON("http://localhost:57114/api/pitoday?callback=MyCallbackFunction",
+                    function (data) {
+                        console.log(data);
+                        $.each(data, function (i, item) {
+                            if (i == 500) return false;
+                            if (item.hydrantId == 3) {
+                                cons3 = cons3 + item.consumption;
+
+                            }
+
+                            if (item.hydrantId == 5) {
+                                cons5 = cons5 + item.consumption;
+                            }
+
+                            if (item.hydrantId == 6) {
+                                cons6 = cons6 + item.consumption;
+                            }
+
+                            if (item.hydrantId == 7) {
+                                cons7 = cons7 + item.consumption;
+                            }
+
+                        });
+
+
+                    });
+                var arr = new Array(['Malir', cons3], ['Liyari', cons5], ['Orangi', cons6], ['Saddar', cons7]);
+                console.log(arr);
+                d1 = arr;
+                console.log(d1);
+
+            })(jQuery);
+
+            Highcharts.chart('container', {
+                chart: {
+                    type: 'pie',
+                    options3d: {
+                        enabled: true,
+                        alpha: 45,
+                        beta: 0
+                    }
+                },
+                title: {
+                    text: 'Each Hydrant Consumption Share'
+                },
+                tooltip: {
+                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                },
+                plotOptions: {
+                    pie: {
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                        depth: 35,
+                        dataLabels: {
+                            enabled: true,
+                            format: '{point.name}'
+                        }
+                    }
+                },
+                series: [{
+                    type: 'pie',
+                    name: 'Hydrant share',
+                    data: d1
+                }]
+            });
+        </script>
+
+
