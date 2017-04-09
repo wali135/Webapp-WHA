@@ -12,14 +12,9 @@
 <div class="row">
     <div class="col-md-2"><nav class="cd-secondary-nav">
     <ul>
-        <li><a class="active" href="#0">Daily consumption</a></li>
-        <li><a href="#0">Weakly Consumption</a></li>
-        <li><a href="#0">Monthly Consumption</a></li>
-        <li><a href="#0">Videos</a></li>
-        <li><a href="#0">Specs</a></li>
-        <li><a href="#0">Support</a></li>
-        <li><a href="#0">Compare</a></li>
-        <li><a href="#0">Buy</a></li>
+        <li><a href="javascript:daily();">Daily consumption</a></li>
+        <li><a href="javascript:monthly();">Monthly Consumption</a></li>
+        
     </ul>
 </nav></div>
 <div class="col-md-10"><div id="container" style="height: 400px"></div></div>
@@ -104,6 +99,154 @@
                     data: d1
                 }]
             });
+            function daily()
+            {
+                var cons3 = 20.5;
+                var cons5 = 30.5;
+                var cons6 = 40.6;
+                var cons7 = 50.2;
+
+                (function ($) {
+                    $.getJSON("http://whafyp.azurewebsites.net/api/pitoday?callback=MyCallbackFunction",
+                        function (data) {
+                            console.log(data);
+                            $.each(data, function (i, item) {
+                                if (i == 500) return false;
+                                if (item.hydrantId == 3) {
+                                    cons3 = cons3 + item.consumption;
+
+                                }
+
+                                if (item.hydrantId == 5) {
+                                    cons5 = cons5 + item.consumption;
+                                }
+
+                                if (item.hydrantId == 6) {
+                                    cons6 = cons6 + item.consumption;
+                                }
+
+                                if (item.hydrantId == 7) {
+                                    cons7 = cons7 + item.consumption;
+                                }
+
+                            });
+
+
+                        });
+                    var arr = new Array(['Malir', cons3], ['Liyari', cons5], ['Orangi', cons6], ['Saddar', cons7]);
+                    console.log(arr);
+                    d1 = arr;
+                    console.log(d1);
+
+                })(jQuery);
+
+                Highcharts.chart('container', {
+                    chart: {
+                        type: 'pie',
+                        options3d: {
+                            enabled: true,
+                            alpha: 45,
+                            beta: 0
+                        }
+                    },
+                    title: {
+                        text: 'Each Hydrant Consumption Share'
+                    },
+                    tooltip: {
+                        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                    },
+                    plotOptions: {
+                        pie: {
+                            allowPointSelect: true,
+                            cursor: 'pointer',
+                            depth: 35,
+                            dataLabels: {
+                                enabled: true,
+                                format: '{point.name}'
+                            }
+                        }
+                    },
+                    series: [{
+                        type: 'pie',
+                        name: 'Hydrant share',
+                        data: d1
+                    }]
+                });
+            }
+            function monthly()
+            {
+                var cons3 = 10.5;
+                var cons5 = 30.5;
+                var cons6 = 60.6;
+                var cons7 = 10.2;
+
+                (function ($) {
+                    $.getJSON("http://whafyp.azurewebsites.net/api/pitoday?callback=MyCallbackFunction",
+                        function (data) {
+                            console.log(data);
+                            $.each(data, function (i, item) {
+                                if (i == 500) return false;
+                                if (item.hydrantId == 3) {
+                                    cons3 = cons3 + item.consumption;
+
+                                }
+
+                                if (item.hydrantId == 5) {
+                                    cons5 = cons5 + item.consumption;
+                                }
+
+                                if (item.hydrantId == 6) {
+                                    cons6 = cons6 + item.consumption;
+                                }
+
+                                if (item.hydrantId == 7) {
+                                    cons7 = cons7 + item.consumption;
+                                }
+
+                            });
+
+
+                        });
+                    var arr = new Array(['Malir', cons3], ['Liyari', cons5], ['Orangi', cons6], ['Saddar', cons7]);
+                    console.log(arr);
+                    d1 = arr;
+                    console.log(d1);
+
+                })(jQuery);
+
+                Highcharts.chart('container', {
+                    chart: {
+                        type: 'pie',
+                        options3d: {
+                            enabled: true,
+                            alpha: 45,
+                            beta: 0
+                        }
+                    },
+                    title: {
+                        text: 'Each Hydrant Consumption Share'
+                    },
+                    tooltip: {
+                        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                    },
+                    plotOptions: {
+                        pie: {
+                            allowPointSelect: true,
+                            cursor: 'pointer',
+                            depth: 35,
+                            dataLabels: {
+                                enabled: true,
+                                format: '{point.name}'
+                            }
+                        }
+                    },
+                    series: [{
+                        type: 'pie',
+                        name: 'Hydrant share',
+                        data: d1
+                    }]
+                });
+            }
         </script>
 
 

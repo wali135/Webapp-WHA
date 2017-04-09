@@ -6,8 +6,44 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>My Hydrant Name</h2>
+<h2>All Hydrants</h2>
 
-<h2>Here goes the Super Visor Details and Graphs</h2>
-   
 
+<table id="hydrants" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+
+            <th>Hydrant Location</th>
+            <th>Hydrant Supervisor</th>
+            
+
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+@section scripts{
+    <script>
+        $(document).ready(function() {
+            var table = $("#hydrants").DataTable({
+                ajax: {
+                    url: "/api/hydrants",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "location"
+                        
+                        
+                    }, {
+                        data: "supervisorName"
+                    }
+                ]
+            });
+
+           
+
+        });
+
+    </script>
+    }
