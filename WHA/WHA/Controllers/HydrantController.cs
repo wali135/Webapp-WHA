@@ -28,9 +28,14 @@ namespace WHA.Controllers
         public ActionResult Index()
         {
             if(User.IsInRole(RoleName.Admin))
-            return View();
+            {
+                return View();
+            }
 
-            return View("IndexSuper");
+            else {
+                return View("IndexSuper");
+            }
+            
         }
 
         [Authorize(Roles =RoleName.Admin)]
