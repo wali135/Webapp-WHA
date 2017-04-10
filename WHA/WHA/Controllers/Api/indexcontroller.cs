@@ -32,14 +32,16 @@ namespace WHA.Controllers.Api
            
         }
 
-        /*//GET /api/entries/id
-        [Route("api/entries/{id}")]
-        public IEnumerable<Entry> GetEntries(int id)
+        //GET /api/weekly
+        [Route("api/weekly")]
+        public IEnumerable<Entry> Getweekly()
         {
-            return _context.Entries.Where(b=>b.HydrantId==id).Include(c=>c.Driver).ToList();
+            DateTime dn = DateTime.Today;
+            DateTime week =  dn.AddDays(-(int)dn.DayOfWeek - 6);
+            return _context.Entries.Where(s => s.DateTime.Day <= dn.Day && s.DateTime.Day >= week.Day).ToList();
         }
 
-        //POST /api/entry
+       /* //POST /api/entry
         
         [Route("api/entry/{id}")]
         [HttpPost]

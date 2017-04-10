@@ -27,12 +27,16 @@
 
 
 <script>
+    
 
-            var cons3 = 20.5;
-            var cons5 = 30.5;
-            var cons6 = 40.6;
-            var cons7 = 50.2;
-
+        var cons3= 0;
+        var cons5= 0;
+        var cons6 = 0;
+        var cons7 = 0;
+        var d1;
+        globalv = {
+        var : arr =[]
+            };
             (function ($) {
                 $.getJSON("http://whafyp.azurewebsites.net/api/pitoday?callback=MyCallbackFunction",
                     function (data) {
@@ -41,7 +45,7 @@
                             if (i == 500) return false;
                             if (item.hydrantId == 3) {
                                 cons3 = cons3 + item.consumption;
-
+                               
                             }
 
                             if (item.hydrantId == 5) {
@@ -57,55 +61,65 @@
                             }
 
                         });
-
+                        console.log(cons3);
+                     
+                            var arr = new Array(['Malir', cons3], ['Liyari', cons5], ['Orangi', cons6], ['Saddar', cons7]);
+                      
+                            Highcharts.chart('container', {
+                                chart: {
+                                    type: 'pie',
+                                    options3d: {
+                                        enabled: true,
+                                        alpha: 45,
+                                        beta: 0
+                                    }
+                                },
+                                title: {
+                                    text: 'Water Consumption per Hydrant (today)'
+                                },
+                                tooltip: {
+                                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                                },
+                                plotOptions: {
+                                    pie: {
+                                        allowPointSelect: true,
+                                        cursor: 'pointer',
+                                        depth: 35,
+                                        dataLabels: {
+                                            enabled: true,
+                                            format: '{point.name}'
+                                        }
+                                    }
+                                },
+                                series: [{
+                                    type: 'pie',
+                                    name: 'Hydrant share',
+                                    data: arr
+                                }]
+                            });
+                        console.log(arr);
 
                     });
-                var arr = new Array(['Malir', cons3], ['Liyari', cons5], ['Orangi', cons6], ['Saddar', cons7]);
-                console.log(arr);
-                d1 = arr;
-                console.log(d1);
-
+            
+                
             })(jQuery);
 
-            Highcharts.chart('container', {
-                chart: {
-                    type: 'pie',
-                    options3d: {
-                        enabled: true,
-                        alpha: 45,
-                        beta: 0
-                    }
-                },
-                title: {
-                    text: 'Water Consumption per Hydrant (today)'
-                },
-                tooltip: {
-                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-                },
-                plotOptions: {
-                    pie: {
-                        allowPointSelect: true,
-                        cursor: 'pointer',
-                        depth: 35,
-                        dataLabels: {
-                            enabled: true,
-                            format: '{point.name}'
-                        }
-                    }
-                },
-                series: [{
-                    type: 'pie',
-                    name: 'Hydrant share',
-                    data: d1
-                }]
-            });
+            
+
+            
+           
+            
+                
             function daily()
             {
-                var cons3 = 20.5;
-                var cons5 = 30.5;
-                var cons6 = 40.6;
-                var cons7 = 50.2;
-
+                var cons3 = 0;
+                var cons5 = 0;
+                var cons6 = 0;
+                var cons7 = 0;
+                var d1;
+                globalv = {
+                    var: arr = []
+                };
                 (function ($) {
                     $.getJSON("http://whafyp.azurewebsites.net/api/pitoday?callback=MyCallbackFunction",
                         function (data) {
@@ -130,62 +144,62 @@
                                 }
 
                             });
+                            console.log(cons3);
 
+                            var arr = new Array(['Malir', cons3], ['Liyari', cons5], ['Orangi', cons6], ['Saddar', cons7]);
+
+                            Highcharts.chart('container', {
+                                chart: {
+                                    type: 'pie',
+                                    options3d: {
+                                        enabled: true,
+                                        alpha: 45,
+                                        beta: 0
+                                    }
+                                },
+                                title: {
+                                    text: 'Water Consumption per Hydrant (today)'
+                                },
+                                tooltip: {
+                                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                                },
+                                plotOptions: {
+                                    pie: {
+                                        allowPointSelect: true,
+                                        cursor: 'pointer',
+                                        depth: 35,
+                                        dataLabels: {
+                                            enabled: true,
+                                            format: '{point.name}'
+                                        }
+                                    }
+                                },
+                                series: [{
+                                    type: 'pie',
+                                    name: 'Hydrant share',
+                                    data: arr
+                                }]
+                            });
+                            console.log(arr);
 
                         });
-                    var arr = new Array(['Malir', cons3], ['Liyari', cons5], ['Orangi', cons6], ['Saddar', cons7]);
-                    console.log(arr);
-                    d1 = arr;
-                    console.log(d1);
+
 
                 })(jQuery);
-
-                Highcharts.chart('container', {
-                    chart: {
-                        type: 'pie',
-                        options3d: {
-                            enabled: true,
-                            alpha: 45,
-                            beta: 0
-                        }
-                    },
-                    title: {
-                        text: 'Each Hydrant Consumption Share'
-                    },
-                    tooltip: {
-                        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-                    },
-                    plotOptions: {
-                        pie: {
-                            allowPointSelect: true,
-                            cursor: 'pointer',
-                            depth: 35,
-                            dataLabels: {
-                                enabled: true,
-                                format: '{point.name}'
-                            }
-                        }
-                    },
-                    series: [{
-                        type: 'pie',
-                        name: 'Hydrant share',
-                        data: d1
-                    }]
-                });
             }
             function weekly()
             {
                 var con0 = 0;
-                var con1 = 65423;
-                var con2 = 45136;
-                var con3 = 32459;
-                var con4 = 60032;
-                var con5 = 72364;
-                var con6 = 44263;
+                var con1 = 0;
+                var con2 = 0;
+                var con3 = 0;
+                var con4 = 0;
+                var con5 = 0;
+                var con6 = 0;
                 var d1 = [];
 
                 (function ($) {
-                    $.getJSON("http://whafyp.azurewebsites.net/api/pitoday?callback=MyCallbackFunction",
+                    $.getJSON("http://whafyp.azurewebsites.net/api/weekly?callback=MyCallbackFunction",
                         function (data) {
                             console.log(data);
                             $.each(data, function (i, item) {
