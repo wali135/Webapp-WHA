@@ -204,101 +204,117 @@
                             console.log(data);
                             $.each(data, function (i, item) {
                                 if (i == 500) return false;
-                                if (item.hydrantId == 3) {
-                                    cons3 = cons3 + item.consumption;
+                                var date = new Date(item.dateTime);
+                                var day = date.getDay();
+                                if (day==0) {
+                                    con0 = con0 + item.consumption;
 
                                 }
 
-                                if (item.hydrantId == 5) {
-                                    cons5 = cons5 + item.consumption;
+                                if (day == 1) {
+                                    con1 = con1 + item.consumption;
+
                                 }
 
-                                if (item.hydrantId == 6) {
-                                    cons6 = cons6 + item.consumption;
+                                if (day == 2) {
+                                    con2 = con2 + item.consumption;
+
                                 }
 
-                                if (item.hydrantId == 7) {
-                                    cons7 = cons7 + item.consumption;
+                                if (day == 3) {
+                                    con3 = con3 + item.consumption;
+
+                                }
+                                if (day == 4) {
+                                    con4 = con4 + item.consumption;
+
+                                }
+                                if (day ==5) {
+                                    con5 = con5 + item.consumption;
+
+                                }
+                                if (day == 6) {
+                                    con6 = con6 + item.consumption;
+
                                 }
 
                             });
+                            var arr = new Array(con0, con1, con2, con3, con4, con5, con6);
+                            console.log(arr);
+                            Highcharts.chart('container', {
+                                chart: {
+                                    type: 'area',
+
+                                },
+                                title: {
+                                    text: 'Past 7 days consumption'
+                                },
+
+                                xAxis: {
+                                    allowDecimals: false,
+                                    labels: {
+                                        formatter: function () {
+                                            if (this.value == 0)
+                                            { return "Sunday"; }
+                                            else if (this.value == 1)
+                                            { return "Monday"; }
+                                            else if (this.value == 2)
+                                            { return "Tuesday"; }
+                                            else if (this.value == 3)
+                                            { return "Wednesday"; }
+                                            else if (this.value == 4)
+                                            { return "Thrusday"; }
+                                            else if (this.value == 5)
+                                            { return "Friday"; }
+                                            else if (this.value == 6)
+                                            { return "Saturday"; }
+
+                                        }
+                                    }
+                                },
+                                yAxis: {
+                                    title: {
+                                        text: 'Water Consumption in ml'
+                                    },
+                                    labels: {
+                                        formatter: function () {
+                                            return this.value + 'ml';
+                                        }
+                                    }
+                                },
+                                tooltip: {
+                                    pointFormat: '{series.name} consumed <b>{point.y:,.0f} ml</b><br/>water in {point.x}'
+                                },
+                                plotOptions: {
+                                    area: {
+                                        pointStart: 0,
+                                        marker: {
+                                            enabled: false,
+                                            symbol: 'circle',
+                                            radius: 2,
+                                            states: {
+                                                hover: {
+                                                    enabled: true
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                series: [{
+                                    name: 'Hydrants',
+                                    data: arr
+                                }]
 
 
+
+                            });
                         });
-                    var arr = new Array(con0, con1, con2, con3,con4, con5,con6);
-                    console.log(arr);
-                    d1 = arr;
-                    console.log(d1);
+                    
+                    
 
                 })(jQuery);
 
-                Highcharts.chart('container', {
-                    chart: {
-                        type: 'area',
-                       
-                    },
-                    title: {
-                        text: 'Past 7 days consumption'
-                    },
-                    
-                    xAxis: {
-                        allowDecimals: false,
-                        labels: {
-                            formatter: function () {
-                                if (this.value == 0)
-                                { return "Sunday"; }
-                                else if (this.value == 1)
-                                { return "Monday"; }
-                                else if (this.value == 2)
-                                { return "Tuesday"; }
-                                else if (this.value == 3)
-                                { return "Wednesday"; }
-                                else if (this.value == 4)
-                                { return "Thrusday"; }
-                                else if (this.value == 5)
-                                { return "Friday"; }
-                                else if (this.value == 6)
-                                { return "Saturday"; }
-                               
-                            }
-                        }
-                    },
-                    yAxis: {
-                        title: {
-                            text: 'Water Consumption in ml'
-                        },
-                        labels: {
-                            formatter: function () {
-                                return this.value  + 'ml';
-                            }
-                        }
-                    },
-                    tooltip: {
-                        pointFormat: '{series.name} consumed <b>{point.y:,.0f} ml</b><br/>water in {point.x}'
-                    },
-                    plotOptions: {
-                        area: {
-                            pointStart: 0,
-                            marker: {
-                                enabled: false,
-                                symbol: 'circle',
-                                radius: 2,
-                                states: {
-                                    hover: {
-                                        enabled: true
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    series: [{
-                        name: 'Hydrants',
-                        data: d1
-                    }]
-                 
-                    
-                    
-                });
+               
             }
         </script>
 
