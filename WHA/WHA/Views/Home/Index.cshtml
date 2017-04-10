@@ -13,7 +13,7 @@
     <div class="col-md-2"><nav class="cd-secondary-nav">
     <ul>
         <li><a href="javascript:daily();">Daily consumption</a></li>
-        <li><a href="javascript:monthly();">Monthly Consumption</a></li>
+        <li><a href="javascript:weekly();">Weekly Consumption</a></li>
         
     </ul>
 </nav></div>
@@ -173,12 +173,16 @@
                     }]
                 });
             }
-            function monthly()
+            function weekly()
             {
-                var cons3 = 10.5;
-                var cons5 = 30.5;
-                var cons6 = 60.6;
-                var cons7 = 10.2;
+                var con0 = 0;
+                var con1 = 65423;
+                var con2 = 45136;
+                var con3 = 32459;
+                var con4 = 60032;
+                var con5 = 72364;
+                var con6 = 44263;
+                var d1 = [];
 
                 (function ($) {
                     $.getJSON("http://whafyp.azurewebsites.net/api/pitoday?callback=MyCallbackFunction",
@@ -207,7 +211,7 @@
 
 
                         });
-                    var arr = new Array(['Malir', cons3], ['Liyari', cons5], ['Orangi', cons6], ['Saddar', cons7]);
+                    var arr = new Array(con0, con1, con2, con3,con4, con5,con6);
                     console.log(arr);
                     d1 = arr;
                     console.log(d1);
@@ -216,35 +220,70 @@
 
                 Highcharts.chart('container', {
                     chart: {
-                        type: 'pie',
-                        options3d: {
-                            enabled: true,
-                            alpha: 45,
-                            beta: 0
-                        }
+                        type: 'area',
+                       
                     },
                     title: {
-                        text: 'Each Hydrant Consumption Share'
+                        text: 'Past 7 days consumption'
+                    },
+                    
+                    xAxis: {
+                        allowDecimals: false,
+                        labels: {
+                            formatter: function () {
+                                if (this.value == 0)
+                                { return "Sunday"; }
+                                else if (this.value == 1)
+                                { return "Monday"; }
+                                else if (this.value == 2)
+                                { return "Tuesday"; }
+                                else if (this.value == 3)
+                                { return "Wednesday"; }
+                                else if (this.value == 4)
+                                { return "Thrusday"; }
+                                else if (this.value == 5)
+                                { return "Friday"; }
+                                else if (this.value == 6)
+                                { return "Saturday"; }
+                               
+                            }
+                        }
+                    },
+                    yAxis: {
+                        title: {
+                            text: 'Water Consumption in ml'
+                        },
+                        labels: {
+                            formatter: function () {
+                                return this.value  + 'ml';
+                            }
+                        }
                     },
                     tooltip: {
-                        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                        pointFormat: '{series.name} consumed <b>{point.y:,.0f} ml</b><br/>water in {point.x}'
                     },
                     plotOptions: {
-                        pie: {
-                            allowPointSelect: true,
-                            cursor: 'pointer',
-                            depth: 35,
-                            dataLabels: {
-                                enabled: true,
-                                format: '{point.name}'
+                        area: {
+                            pointStart: 0,
+                            marker: {
+                                enabled: false,
+                                symbol: 'circle',
+                                radius: 2,
+                                states: {
+                                    hover: {
+                                        enabled: true
+                                    }
+                                }
                             }
                         }
                     },
                     series: [{
-                        type: 'pie',
-                        name: 'Hydrant share',
+                        name: 'Hydrants',
                         data: d1
                     }]
+                 
+                    
+                    
                 });
             }
         </script>
